@@ -40,6 +40,18 @@ impl OnlineStats {
         Default::default()
     }
 
+    pub fn from_state(size: u64, mean: f64, variance: f64) -> Self {
+        Self {
+            size,
+            mean,
+            variance,
+        }
+    }
+
+    pub fn into_state(self) -> (u64, f64, f64) {
+        (self.size, self.mean, self.variance)
+    }
+
     /// Initializes variance from a sample.
     pub fn from_slice<T: ToPrimitive>(samples: &[T]) -> OnlineStats {
         samples.iter().map(|n| n.to_f64().unwrap()).collect()
