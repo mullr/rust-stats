@@ -26,6 +26,7 @@ pub fn mean<I>(it: I) -> f64
 
 /// Online state for computing mean, variance and standard deviation.
 #[derive(Clone, Copy)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct OnlineStats {
     size: u64,
     mean: f64,
